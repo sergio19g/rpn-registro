@@ -1,0 +1,62 @@
+<!-- Main content -->
+<section class="content">
+
+    <div class="">
+        <div class="">
+        
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Listado de marcas</h3>
+                    <div class="col text-right">
+                        <button class="btn btn-primary" routerLink="/marcas/nuevo">
+                        <i class="fa fa-plus"></i>
+                        Agregar
+                        </button>
+                    </div>
+                </div><!-- /.card-header -->
+          
+                <div class="card-body">
+                    <table  class="table table-striped table-bordered table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
+              
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let marca of marcas">
+                                <td>{{ marca.image }}</td>
+                                <td>{{ marca.id }}</td>
+                                <td>{{ marca.name }}</td>
+                                <td>{{ marca.categoryBrand.name }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-sm mr-2"><i class="far fa-edit"></i></a>
+                                
+                                    <a href="#" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.card-body -->
+            </div> <!-- /.card -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn faster" role="alert">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-spinner fa-spin fa-2x"></i>
+        </p>
+        <p>
+            Espere por favor
+        </p>
+    </div>
+    
+</section><!-- /.content -->
+  
+
+
+

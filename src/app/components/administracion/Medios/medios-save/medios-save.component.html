@@ -1,0 +1,96 @@
+
+    <div class="card card-info">
+        
+        <div class="card-header">
+            <h3 class="card-title">Nuevo medio</h3>
+        </div><!-- /.card-header -->
+        
+        
+        <form autocomplete="off" [formGroup] = "forma" (ngSubmit) = "guardar()" class="form-horizontal"><!-- form start -->
+            
+            <div class="card-body">
+            
+                <div class="form-group row">
+                    
+                    <label for="nombre" class="col-sm-2 col-form-label">Nombre comercial</label>
+            
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Nombre comercial"
+                            formControlName = "name"
+                            [class.is-invalid] = "nombreComercialNoValido"
+                            minlength = "5"
+                        >
+                        <small *ngIf = "nombreComercialNoValido" class = "text-danger">
+                            Ingrese un nombre comercial (Al menos 5 caracteres)</small>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    
+                    <label for="nombre" class="col-sm-2 col-form-label">Nombre mercantil</label>
+            
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Nombre mercantil"
+                            formControlName = "description"
+                            [class.is-invalid] = "nombreMercantilNoValido"
+                            minlength = "5"
+                           
+                        >
+                        <small *ngIf = "nombreMercantilNoValido" class = "text-danger">
+                            Ingrese un nombre mercantil (Al menos 5 caracteres)</small>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row">
+                    
+                    <label for="tipoEstacion" class="col-sm-2 col-form-label">Tipo de estación</label>
+            
+                    <div class="col-sm-10">
+                        
+                        <ng-select #mediumTypesSelect [items] = "mediumTypes" 
+                            bindLabel = "name"
+                            bindValue = "id"
+                            [selectOnTab] = "true"
+                            placeholder = "Seleccione una opción"
+                            formControlName = "advertisingMediumType"
+                            [class.is-invalid] = "tipoEstacionNoValido"
+                        >
+                        </ng-select>
+
+                        <small *ngIf = "tipoEstacionNoValido" class="text-danger" >Debe de seleccionar un tipo de estación</small>
+                    
+                    </div>
+
+                </div> 
+
+                <div class="form-group row">
+                    
+                    <label for="nombre" class="col-sm-2 col-form-label">Logo</label>
+            
+                    <div class="col-sm-10">
+                        <angular-file-uploader
+                            [config]="afuConfig">
+                        </angular-file-uploader>
+                    </div>
+
+                </div>
+            </div><!-- /.card-body -->
+        
+            <div class="card-footer text-center">
+            
+                <button type="submit" class="btn btn-success mr-2">Guardar
+                    <i class="fas fa-save"></i>
+                </button>
+                <button type="button" routerLink = "/marcas-index" class="btn btn-danger">Cancelar
+                    <i class="fas fa-window-close"></i>
+                </button>
+
+            </div> <!-- /.card-footer -->
+       
+        </form>
+    </div>
+
+

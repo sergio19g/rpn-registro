@@ -1,0 +1,83 @@
+    
+    <div class="row">
+        <div class="col-md-6">
+            
+            <div class="card card-info">
+        
+                <div class="card-header">
+                    <h3 class="card-title">Notificar</h3>
+                </div> <!-- /.card-header -->
+               
+                
+                <form #form = "ngForm" autocomplete="off"><!-- form start -->
+                    
+                    <div class="card-body">
+                        
+                        <div class="form-group">
+                      
+                            <input type="text" class="form-control" placeholder="Nombre del anuncio a registrar">
+                    
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <input  [(ngModel)] = "customSelected" 
+                                    [typeahead] = "marcas" 
+                                    typeaheadOptionField = "name" 
+                                    name="marca"
+                                    class="form-control" 
+                                    placeholder="Marca">
+                    
+                        </div>
+
+                        <div class="form-group">
+                      
+                            <input type="text" class="form-control" placeholder="Estado">
+                    
+                        </div>
+
+                        <div class="form-group">
+                      
+                            <input type="text" class="form-control" placeholder="Medio">
+                    
+                        </div>
+        
+                    </div><!-- /.card-body -->
+                
+                    <div class="card-footer text-center">
+                        
+                        <button type="submit" class="btn btn-success mr-2">Notificar anuncio
+                            <i class="fas fa-save"></i>
+                        </button>
+                        <!--<button type="button" routerLink = "/notificaciones-index" class="btn btn-danger">Cancelar
+                            <i class="fas fa-window-close"></i>
+                        </button>-->
+                    </div> <!-- /.card-footer -->
+              
+                </form>
+        
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <span>Nombre del anuncio</span>
+                    </div>
+                    <div class="form-group">
+                        <span>Marca</span>
+                    </div>
+                    <div class="form-group">
+                        <span>Estado</span>
+                    </div>
+                    <div class="form-group">
+                        <span>Medio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
