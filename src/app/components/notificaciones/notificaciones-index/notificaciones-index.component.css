@@ -1,0 +1,15 @@
+.binding{
+    border: none;
+    border-bottom: dotted 3px #E5E7EB;
+    width: 100%;
+}
+.card{
+    height: 100%;
+}
+.logo {
+    display: block;
+    width: 20%;
+    height: 20%;
+    margin: 0 auto;
+   
+}

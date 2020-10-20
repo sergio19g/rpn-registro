@@ -1,14 +1,132 @@
-<div class="row">
-    <div class="col-xs-12 col-12 col-md-4 form-group">
-      <input type="text"
-             placeholder="Datepicker"
-             class="form-control"
-             bsDatepicker>
+
+  <div class = "row">
+    
+    <div class = "col-md-12">
+
+      <div class = "card card-info">
+        <div class = "card-header">
+          <h3 class = "card-title">Parámetros de busqueda</h3>
+        </div>
+        <div class = "card-body">
+          
+          <div class = "row">
+
+            <div class = "col-3 form-group">
+              <input type = "text"
+                     placeholder = "Desde"
+                     class = "form-control"
+                     bsDatepicker>
+            </div>
+
+            <div class = "col-3 form-group">
+              <input type="text"
+                     placeholder="Hasta"
+                     class="form-control"
+                     bsDatepicker>
+            </div>
+
+            <div class = "col-3 form-group">
+              
+              <ng-select appearance = "outline" #statusSelect 
+                  placeholder = "Notificados" [searchable] = "false"
+              
+              >
+                <ng-option value = "FULFILLMENT">Notificado</ng-option>
+                <ng-option value = "BREACH">Sin notificar</ng-option>
+              
+              </ng-select>
+
+            </div>
+
+
+            <div class = "col-3 form-group">
+              <ng-select appearance = "outline" #statusSelect 
+                  placeholder = "Tipo de medio" [searchable] = "false"
+              
+              >
+                <ng-option value = "FULFILLMENT">TV</ng-option>
+                <ng-option value = "BREACH">Radio</ng-option>
+                <ng-option value = "BREACH">Ambos</ng-option>
+              
+              </ng-select>
+            </div>
+
+          </div>
+
+          <div class = "row">
+
+            <div class = "col-4 form-group">
+              <ng-select appearance = "outline" #statusSelect 
+                          placeholder = "Estado" [searchable] = "false"
+                          
+              >
+                <ng-option value = "FULFILLMENT">Cumplimiento</ng-option>
+                <ng-option value = "BREACH">Incumplimiento</ng-option>
+                <ng-option value = "VERIFICATION">Verificación</ng-option>
+
+              </ng-select>
+            </div>
+
+            <div class = "col-4 form-group">
+              <input type="text" class="form-control" placeholder="#Reporte">
+            </div>
+
+            <div class = "col-4 form-group">
+              <input type="text" class="form-control" placeholder="Anuncio">
+            </div>
+
+          </div>
+
+          <div class = "row">
+            
+            <div class="col-4 form-group">
+              <input  
+                     
+                      class = "form-control" 
+                      placeholder = "Marcas"
+                     
+              >
+            </div>
+
+               
+            <div class="col-4 form-group">
+              <input  
+                     
+                      class = "form-control" 
+                      placeholder = "Estaciones"
+                     
+              >
+            </div>
+
+            <div class="col-4 form-group">
+              <input  
+                     
+                      class = "form-control" 
+                      placeholder = "Profesionales"
+                     
+              >
+            </div>
+
+          </div>
+           
+            
+        </div>
+        
+      </div>
+
     </div>
-    <div class="col-xs-12 col-12 col-md-4 form-group">
-      <input type="text"
-             placeholder="Daterangepicker"
-             class="form-control"
-             bsDaterangepicker>
-    </div>
+ 
+      
   </div>
+
+
+
+  <!--<div class="col-xs-12 col-12 col-md-4 form-group">
+    <input type="text"
+          placeholder="Daterangepicker"
+          class="form-control"
+          bsDaterangepicker
+    >
+  </div>-->
+
+  

@@ -1,5 +1,6 @@
     
     <div class="row">
+        
         <div class="col-md-6">
             
             <div class="card card-info">
@@ -9,37 +10,74 @@
                 </div> <!-- /.card-header -->
                
                 
-                <form #form = "ngForm" autocomplete="off"><!-- form start -->
+                <form autocomplete="off" [formGroup] = "forma" (ngSubmit) = "guardar()"><!-- form start -->
                     
                     <div class="card-body">
                         
                         <div class="form-group">
                       
-                            <input type="text" class="form-control" placeholder="Nombre del anuncio a registrar">
-                    
+                            <input type="text" class="form-control" placeholder="Nombre del anuncio a registrar"
+                                   formControlName = "name"
+                                   [class.is-invalid] = "nombreNoValido"
+                                   minlength = "5" 
+                            >
+                            <small *ngIf = "nombreNoValido" class = "text-danger">
+                                Ingrese un nombre (Al menos 5 caracteres)</small>
                         </div>
 
                         <div class="form-group">
                             
-                            <input  [(ngModel)] = "customSelected" 
+                            <input  formControlName = "brandId"
                                     [typeahead] = "marcas" 
-                                    typeaheadOptionField = "name" 
-                                    name="marca"
-                                    class="form-control" 
-                                    placeholder="Marca">
+                                    typeaheadOptionField = "name"
+                                    (typeaheadOnSelect) = "onSelect($event)"
+                                    class = "form-control" 
+                                    placeholder = "Marca"
+                                    [typeaheadMinLength] = "1"
+                                    [class.is-invalid] = "marcaNoValido"
+                            >
+                            <small *ngIf = "marcaNoValido" class = "text-danger">
+                                Ingrese una marca</small>
                     
                         </div>
 
                         <div class="form-group">
                       
-                            <input type="text" class="form-control" placeholder="Estado">
-                    
+                            <ng-select appearance = "outline" #statusSelect 
+                                placeholder = "Estado" [searchable] = "false"
+                                formControlName = "statusAdvertising"
+                                [class.is-invalid] = "estatusNoValido"
+                            >
+                                <ng-option value = "FULFILLMENT">Cumplimiento</ng-option>
+                                <ng-option value = "BREACH">Incumplimiento</ng-option>
+                                <ng-option value = "VERIFICATION">Verificación</ng-option>
+
+                            </ng-select>
+                            <small *ngIf = "estatusNoValido" class = "text-danger">
+                                Seleccione un estado</small>
                         </div>
 
                         <div class="form-group">
-                      
-                            <input type="text" class="form-control" placeholder="Medio">
-                    
+                            <input  formControlName="advertisingMediumId"
+                                    [typeahead] = "medios" 
+                                    typeaheadOptionField = "name"
+                                    (typeaheadOnSelect) = "onSelect2($event)" 
+                                    class = "form-control" 
+                                    placeholder = "Medio"
+                                    [class.is-invalid] = "medioNoValido"
+                            >
+                            <small *ngIf = "medioNoValido" class = "text-danger">
+                                Ingrese una medio</small>
+                        </div>
+
+                        <div class = "form-group">
+                            <div class="col-sm-10">
+                                <angular-file-uploader
+                                    [config]="afuConfig"
+                                    
+                                >
+                                </angular-file-uploader>
+                            </div>
                         </div>
         
                     </div><!-- /.card-body -->
@@ -57,26 +95,45 @@
                 </form>
         
             </div>
+
         </div>
 
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group">
-                        <span>Nombre del anuncio</span>
+        <div class = "col-md-6">
+            <div class = "card">
+                <div class = "card-body" >
+
+                    <div class="row mb-4">
+                        
+                        <!--<img src="../../../../assets/img/tmplogo.jpg" alt="logo" class="logo">-->
+                        <img [src]="imagen" alt="logo" class="logo">
+                        
                     </div>
-                    <div class="form-group">
-                        <span>Marca</span>
+
+                    <div class="row">
+
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <input type="text" class = "binding" placeholder = "Nombre del anuncio a registrar" [value] = "forma.value.name" disabled> 
+                            </div>
+                            <div class="form-group">
+                                 <input type="text" class = "binding" placeholder = "marca" [value] = "forma.value.brandId" disabled> 
+                            </div>
+                            <div class="form-group">
+                                 <input type="text" class = "binding" placeholder = "estado" [value] = "forma.value.statusAdvertising" disabled> 
+                            </div>
+                            <div class="form-group">
+                                 <input type="text" class = "binding" placeholder = "medio" [value] = "forma.value.advertisingMediumId" disabled> 
+                            </div>
+    
+                        </div> 
+                      
                     </div>
-                    <div class="form-group">
-                        <span>Estado</span>
-                    </div>
-                    <div class="form-group">
-                        <span>Medio</span>
-                    </div>
+                   
                 </div>
             </div>
         </div>
+
     </div>
     
 

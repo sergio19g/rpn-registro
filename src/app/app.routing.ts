@@ -8,6 +8,7 @@ import { AnaliticaIndexComponent } from './components/analitica/analitica-index/
 import { CatMarcasSaveComponent } from './components/administracion/CategoriasMarca/cat-marcas-save/cat-marcas-save.component';
 import { MarcasSaveComponent } from './components/administracion/Marcas/marcas-save/marcas-save.component';
 import { MediosSaveComponent } from './components/administracion/Medios/medios-save/medios-save.component';
+import { UsuariosIndexComponent } from './components/administracion/Usuarios/usuarios-index/usuarios-index.component';
 
 
 const ROUTES : Routes = [
@@ -20,7 +21,8 @@ const ROUTES : Routes = [
     { path: 'marcas-index', component: MarcasIndexComponent },
     { path: 'marcas/:id', component: MarcasSaveComponent },
     { path: 'medios-index', component: MediosIndexComponent },
-    { path: 'medios/:id', component: MediosSaveComponent }
+    { path: 'medios/:id', component: MediosSaveComponent },
+    { path: 'usuarios-index', component: UsuariosIndexComponent }
 ]
 
 export const APP_ROUTES = RouterModule.forRoot(ROUTES);

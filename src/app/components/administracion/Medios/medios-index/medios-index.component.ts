@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MediosService } from 'src/app/services/medios.service';
 import { Subject } from 'rxjs';
+import { MediosModel } from 'src/app/models/medios';
 
 @Component({
   selector: 'app-medios-index',
@@ -12,6 +13,7 @@ export class MediosIndexComponent implements OnDestroy, OnInit {
   loading : boolean = false;
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
+
   medios: any[] = [];
 
   constructor( private _mediosService: MediosService ) { }
@@ -44,8 +46,8 @@ export class MediosIndexComponent implements OnDestroy, OnInit {
 
     this.loading = true;
     this._mediosService.getAll().subscribe( 
-      (response : any) => {
-        console.log(response);
+      (response : any ) => {
+       //console.log(response);
         this.medios = response;
       
         this.dtTrigger.next(this.loading = false);

@@ -34,7 +34,7 @@
                                 <td>{{ marca.name }}</td>
                                 <td>{{ marca.categoryBrand.name }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-info btn-sm mr-2"><i class="far fa-edit"></i></a>
+                                    <a [routerLink] = "['/marcas',marca.id]" class="btn btn-info btn-sm mr-2"><i class="far fa-edit"></i></a>
                                 
                                     <a href="#" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
                                 </td>

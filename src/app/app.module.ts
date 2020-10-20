@@ -31,6 +31,7 @@ import { AnaliticaIndexComponent } from './components/analitica/analitica-index/
 import { CatMarcasSaveComponent } from './components/administracion/CategoriasMarca/cat-marcas-save/cat-marcas-save.component';
 import { MarcasSaveComponent } from './components/administracion/Marcas/marcas-save/marcas-save.component';
 import { MediosSaveComponent } from './components/administracion/Medios/medios-save/medios-save.component';
+import { UsuariosIndexComponent } from './components/administracion/Usuarios/usuarios-index/usuarios-index.component';
 
 
 
@@ -49,7 +50,8 @@ import { MediosSaveComponent } from './components/administracion/Medios/medios-s
     AnaliticaIndexComponent,
     CatMarcasSaveComponent,
     MarcasSaveComponent,
-    MediosSaveComponent
+    MediosSaveComponent,
+    UsuariosIndexComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,9 @@ import { CategoriasMarcaService } from 'src/app/services/categorias-marca.servic
 
 import { MarcaModel } from 'src/app/models/marca';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MarcaService } from 'src/app/services/marca.service';
+import { CategoriasMarcaModel } from 'src/app/models/categoria-marca';
+import { Router, ActivatedRoute } from '@angular/router';
 declare let $: any;
 
 @Component({
@@ -13,8 +16,10 @@ declare let $: any;
 export class MarcasSaveComponent implements OnInit {
 
   marca = new MarcaModel();
-  categorias : any[] = [];
-
+  //marca : any = {}
+  //categoryBrand = new CategoriasMarcaModel();
+  idMarca : any;
+  categorias : CategoriasMarcaModel[] = [];
   forma      : FormGroup;
 
   afuConfig = {
@@ -51,27 +56,35 @@ export class MarcasSaveComponent implements OnInit {
   };
 
   constructor( private _categoriasMarcaService : CategoriasMarcaService, 
-               private fb: FormBuilder
+               private fb : FormBuilder, private _marcaService : MarcaService,
+               private router : Router, private route : ActivatedRoute
     ) 
     { 
+      
+      this.marca = {
+        name         : '',
+        categoryBrand: {
+          id    : null,
+          name  : '',
+          status: ''
+        },
+      }
+
       this.crearFormulario();
-    }
+    } 
 
   ngOnInit(): void {
 
-    /* Aplicando estilos al elemento select del formulario */
-    $('#select2').select2();
+    const id = this.route.snapshot.paramMap.get('id');
+   
+    //console.log(id);
 
-    /* Obateniendo las categorias-marca a través del servicio */
-    this._categoriasMarcaService.getAll().subscribe(
-      (response:any) => {
-        this.categorias = response;
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    if( id !== 'nuevo' ){
+      this.obtenerMarca( id );
+      this.idMarca = id;
+    }
+
+    this.obtenerCategoriasMarca();
   }
 
   get nombreNoValido(){
@@ -79,15 +92,15 @@ export class MarcasSaveComponent implements OnInit {
   }
 
   get tipoMarcaNoValido(){
-    return this.forma.get('categoryBrandIdCategoryBrand').invalid && this.forma.get('categoryBrandIdCategoryBrand').touched
+    return this.forma.get('categoryBrand').invalid && this.forma.get('categoryBrand').touched
   }
 
 
   crearFormulario(){
     
     this.forma = this.fb.group({
-      name                        : ['', [ Validators.required, Validators.minLength(5) ]],
-      categoryBrandIdCategoryBrand: [ null , Validators.required ]
+      name         : [ ''   , [ Validators.required, Validators.minLength(5) ]],
+      categoryBrand: [ null , Validators.required ]
     });
 
   }
@@ -106,7 +119,67 @@ export class MarcasSaveComponent implements OnInit {
         
       });
     }
-    console.log(this.forma.value);
+     
+    if( this.marca.id != 0 ){
+      this.marca.id               = this.idMarca
+      this.marca.name             = this.forma.get('name').value
+      this.marca.categoryBrand.id = this.forma.get('categoryBrand').value
+      
+      this._marcaService.update( this.marca , this.idMarca).subscribe(
+        ( response ) => {
+          this.router.navigateByUrl('/marcas-index');
+          console.log(response);
+        },
+        error => { 
+          console.log(error);
+        }
+      );
+    } else{
+      this.marca.name             = this.forma.get('name').value
+      this.marca.categoryBrand.id = this.forma.get('categoryBrand').value
+      
+      this._marcaService.create( this.marca ).subscribe(
+        ( response ) => {
+          this.router.navigateByUrl('/marcas-index');
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+   
+    //console.log(this.forma.value);
+  }
+
+  obtenerCategoriasMarca(){
+
+    /* Obateniendo las categorias-marca a través del servicio */
+    this._categoriasMarcaService.getAll().subscribe(
+      ( response : any) => {
+        this.categorias = response;
+        //console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  obtenerMarca( id ){
+    this._marcaService.getById( id ).subscribe(
+      ( response : MarcaModel ) => {
+       this.forma.patchValue({
+         id           : response.id,
+         name         : response.name,
+         categoryBrand: response.categoryBrand.id
+       });
+        //console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

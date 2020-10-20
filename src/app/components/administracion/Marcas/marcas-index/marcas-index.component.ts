@@ -41,11 +41,13 @@ export class MarcasIndexComponent implements OnDestroy, OnInit {
         }
       }
     };
+    
     this.loading = true;
+
     this._marcaService.getAll().subscribe( 
       
       (result : any) => {
-        console.log(result);
+        //console.log(result);
       this.marcas = result;
       
       this.dtTrigger.next(this.loading = false);

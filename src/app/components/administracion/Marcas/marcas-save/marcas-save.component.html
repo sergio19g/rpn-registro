@@ -4,7 +4,7 @@
         <div class="card-header">
             <h3 class="card-title">Nueva marca</h3>
         </div><!-- /.card-header -->
-        
+         
         
         <form autocomplete = "off"  [formGroup] = "forma" (ngSubmit) = "guardar()" class="form-horizontal"><!-- form start -->
             
@@ -18,6 +18,7 @@
 
                         <input type="text" class="form-control" placeholder="Nombre"
                                 formControlName = "name"
+                               
                                 [class.is-invalid] = "nombreNoValido"
                                 minlength = "3"
                         >
@@ -47,9 +48,9 @@
                             bindValue = "id"
                             [selectOnTab] = "true"
                             placeholder = "Seleccione una opción"
-                            formControlName = "categoryBrandIdCategoryBrand"
+                            formControlName = "categoryBrand"
                             [class.is-invalid] = "tipoMarcaNoValido"
-                        >
+                        > 
                         </ng-select>
                         <small *ngIf = "tipoMarcaNoValido" class="text-danger" >Debe de seleccionar un tipo de marca</small>
 
@@ -63,16 +64,7 @@
                         >
                         </ng-select>
                         <small *ngIf = "categoriaBrand.invalid && categoriaBrand.touched" class="text-danger">Debe de seleccionar un tipo de marca</small>-->
-                        <!--<select id = "select2" class = "form-control" style="width: 100%;" required
-                                name = "categoriaBrand"
-                                #categoriaBrand = "ngModel"
-                                [(ngModel)] = "marca.categoryBrandIdCategoryBrand"
-                                [class.is-invalid] = "categoriaBrand.invalid && categoriaBrand.touched"
-                             >
-                            <option *ngFor = "let categoria of categorias;" value = ""></option>
-                       
-                        </select>
-                        <small *ngIf = "categoriaBrand.invalid && categoriaBrand.touched" class="text-danger">Debe de seleccionr un tipo de marca</small>-->
+                        
                     </div>
 
                 </div> 

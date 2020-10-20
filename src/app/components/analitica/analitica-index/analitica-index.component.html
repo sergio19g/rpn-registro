@@ -1,1 +1,70 @@
-<p>analitica-index works!</p>
+    <div class="row">
+        
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-gradient-warning">
+                <span class="info-box-icon"><i class="fab fa-font-awesome-alt"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total anuncios</span>
+                        <span class="info-box-number">{{ totalAnuncios }}</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                           100 %
+                        </span>
+                    </div> <!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+        
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-gradient-danger">
+                <span class="info-box-icon"><i class="fas fa-exclamation-circle"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total incumplimientos</span>
+                        <span class="info-box-number">{{ totalIncumplimientos }}</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                            {{ porcentajeIncumplimientos }} %
+                        </span>
+                    </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+        
+
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-gradient-success">
+                <span class="info-box-icon"><i class="far fa-check-circle"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Total cumplimientos</span>
+                    <span class="info-box-number">{{ totalCumplimientos }}</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description">
+                        {{ porcentajeCumplimientos }} %
+                    </span>
+                </div> <!-- /.info-box-content -->
+            </div> <!-- /.info-box -->
+        </div> <!-- /.col -->
+       
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-gradient-info">
+                <span class="info-box-icon"><i class="far fa-folder-open"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total registros</span>
+                        <span class="info-box-number">{{ totalRegistros }}</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                            {{ porcentajeRegistros }} % 
+                        </span>
+                    </div> <!-- /.info-box-content -->
+            </div> <!-- /.info-box -->
+        </div> <!-- /.col -->
+    
+    </div><!-- /.row -->
+    
